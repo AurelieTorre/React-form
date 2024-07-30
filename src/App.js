@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import './App.css';
 import store from './store';
+import { updateFirstname, updateLastname, updateAge, updateEmail, updatePassword } from './store';
 
 function App() {
 
@@ -20,26 +21,38 @@ function App() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("firstname", { required: "Vous devez indiquer au moins un prénom ou un pseudo" })} placeholder="Nom" />
-      <p>{errors.firstname?.message}</p>
-      <input {...register("lastname")} placeholder="Prénom" />
-      <input {...register("age", {
-        validate: (value) => value >= 18 || "Vous devez avoir plus de 18 ans",
-      })}
-        placeholder="Âge" />
-      <p>{errors.age?.message}</p>
-      <input {...register("email", { required: "Un email est obligatoire" })} placeholder="Email" />
-      <p>{errors.email?.message}</p>
-      <input {...register("password", {
-        required: "Un mot de passe est obligatoire", minLength: {
-          value: 8,
-          message: "Le mot de passe doit contenir au moins 8 caractères"
-        }
-      })} placeholder="Mot de passe" />
-      <p>{errors.password?.message}</p>
-      <input type="submit" />
-    </form>
+    <div class="form-container">
+      <h1>Inscription</h1>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div class="line">
+          <input {...register("firstname", { required: "Vous devez indiquer au moins un prénom ou un pseudo" })} placeholder="Prénom" />
+          <span class="star"> *</span>
+        </div>
+        <input {...register("lastname")} placeholder="Nom" />
+        <input {...register("age", {
+          validate: (value) => value >= 18 || "Vous devez avoir plus de 18 ans",
+        })}
+          placeholder="Âge" />
+        <div class="line">
+          <input {...register("email", { required: "Un email est obligatoire" })} placeholder="Email" />
+          <span class="star"> *</span>
+        </div>
+        <div class="line">
+          <input {...register("password", {
+            required: "Un mot de passe est obligatoire", minLength: {
+              value: 8,
+              message: "Le mot de passe doit contenir au moins 8 caractères"
+            }
+          })} placeholder="Mot de passe" />
+          <span class="star"> *</span>
+        </div>
+        <input type="submit" />
+        <p class="star">{errors.firstname?.message}</p>
+        <p class="star">{errors.age?.message}</p>
+        <p class="star">{errors.email?.message}</p>
+        <p class="star">{errors.password?.message}</p>
+      </form>
+    </div>
   );
 }
 

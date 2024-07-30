@@ -28,6 +28,14 @@ const userSlice = createSlice({
   },
 });
 
+export const {
+  updateFirstname,
+  updateLastname,
+  updateAge,
+  updateEmail,
+  updatePassword,
+} = userSlice.actions;
+
 const store = configureStore({
   reducer: {
     user: userSlice.reducer,
