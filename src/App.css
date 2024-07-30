@@ -10,7 +10,7 @@ body {
 }
 
 h1 {
-  font-family: serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
   font-size: 1.8rem;
   padding-top: 1.5rem;
@@ -38,6 +38,15 @@ input[type="submit"] {
   margin-top: 20px;
   margin-bottom: 10px;
   background-color: lightsteelblue;
+  transition: transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+  transform: scale(1.1);
+}
+
+input[type="submit"].clicked {
+  transform: scale(0.9);
 }
 
 .line {

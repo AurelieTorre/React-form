@@ -11,9 +11,11 @@ const userSlice = createSlice({
   },
   reducers: {
     updateFirstname: (state, action) => {
+      console.log("updateFirstname", action.payload);
       state.firstname = action.payload;
     },
     updateLastname: (state, action) => {
+      console.log("updateLastname", action.payload);
       state.lastname = action.payload;
     },
     updateAge: (state, action) => {
